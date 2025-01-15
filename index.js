@@ -120,13 +120,15 @@ Router.get("/home", (req, res) => {
             const pdfPath = await newPdf.generatePDF(html, outputPath, options);
             console.log(`Custom PDF created at: ${pdfPath}`);
 
-            res.setHeader("Content-Type", "application/pdf"); // Set the response type to PDF
-            res.sendFile(pdfPath, (err) => {
-                if (err) {
-                    console.error("Error sending the file:", err);
-                    return res.status(500).json({ error: "Failed to send the PDF file" });
-                }
-            });
+            setTimeout(()=>{
+                res.setHeader("Content-Type", "application/pdf"); // Set the response type to PDF
+                res.sendFile(pdfPath, (err) => {
+                    if (err) {
+                        console.error("Error sending the file:", err);
+                        return res.status(500).json({ error: "Failed to send the PDF file" });
+                    }
+                });
+            },2000)
         } catch (error) {
             console.error("Error generating custom PDF:", error);
             return res.status(500).json({ error: "Failed to generate PDF" });
