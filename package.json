@@ -6,5 +6,8 @@
   "dependencies": {
     "@antor-arif/html-pdf-converter": "^1.0.3",
     "express": "^4.21.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
